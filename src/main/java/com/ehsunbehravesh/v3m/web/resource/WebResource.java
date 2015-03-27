@@ -1,22 +1,25 @@
 package com.ehsunbehravesh.v3m.web.resource;
 
 import java.io.IOException;
-import java.io.OutputStream;
+import org.vertx.java.core.http.HttpServerResponse;
 
 /**
  *
  * @author Ehsun Behravesh <ehsun.behravesh@mimos.my>
  */
-public abstract class WebResources {
+public abstract class WebResource {
 
     protected String contentType;
 
-    public WebResources(String contentType) {
+    public WebResource(String contentType) {
         this.contentType = contentType;
     }
 
-    public abstract void writeContent(OutputStream outputStream) throws IOException;
+    //@Deprecated
+    //public abstract void writeContent(OutputStream outputStream) throws IOException;
 
+    public abstract void writeContent(HttpServerResponse response) throws IOException;
+    
     public abstract long contentLength();
 
     public String getContentType() {
